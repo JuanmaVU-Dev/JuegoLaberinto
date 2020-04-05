@@ -1,8 +1,16 @@
-from Puerta import Puerta
-from Pared import Pared
+from Agresivo import Agresivo
+from Bicho import Bicho
+from Bomba import Bomba
+from Este import Este
+from Generoso import Generoso
 from Habitacion import Habitacion
 from Laberinto import Laberinto
-from Bomba import Bomba
+from Norte import Norte
+from Oeste import Oeste
+from Pared import Pared
+from Perezoso import Perezoso
+from Puerta import Puerta
+from Sur import Sur
 
 
 # Juego es la clase principal de la solución
@@ -10,6 +18,13 @@ from Bomba import Bomba
 class Juego:
     def __init__(self):
         self.laberinto = None
+        self.bichos = []
+
+    # Metodos
+
+    # Se añade un bicho
+    def agregarBicho(self,bicho):
+            self.bichos.append(bicho)
 
     # Métodos de fabricación
 
@@ -35,6 +50,45 @@ class Juego:
 
     def fabricarLaberinto(self):
         return Laberinto()
+
+    def fabricarSur(self):
+        return Sur()
+
+    def fabricarEste(self):
+        return Este()
+
+    def fabricarNorte(self):
+        return Norte()
+
+    def fabricarOeste(self):
+        return Oeste()
+
+    def fabricarModoAgresivo(self):
+        return Agresivo()
+
+    def fabricarModoPerezoso(self):
+        return Perezoso()
+
+    def fabricarModoGeneroso(self):
+        return Generoso()
+
+    def fabricarBichoAgresivoEn(self, hab):
+        bicho = Bicho()
+        bicho.modo = self.fabricarModoAgresivo()
+        bicho.posicion = hab
+        return bicho
+
+    def fabricarBichoPerezosoEn(self, hab):
+        bicho = Bicho()
+        bicho.posicion = hab
+        bicho.modo = self.fabricarModoPerezoso()
+        return bicho
+
+    def fabricarBichoGenerosoEn(self, hab):
+        bicho = Bicho()
+        bicho.posicion = hab
+        bicho.modo = self.fabricarModoGeneroso()
+        return bicho
 
     def fabricarLaberinto2HabFM(self):
         print("Juego del laberinto con 2 habitaciones")
@@ -79,3 +133,53 @@ class Juego:
         lab.agregarHabitacion(hab2)
 
         self.laberinto = lab
+
+    """
+    Laberinto de 4 habitaciones y 4 bichos
+    """
+    def fabricarLaberinto4HabFM(self):
+        print("Juego del laberinto con 4 habitaciones")
+        lab = self.fabricarLaberinto()
+        hab1 = self.fabricarHabitacion(1)
+        hab2 = self.fabricarHabitacion(2)
+        hab3 = self.fabricarHabitacion(3)
+        hab4 = self.fabricarHabitacion(4)
+
+        pt12 = self.fabricarPuerta(hab1, hab2)
+        pt13 = self.fabricarPuerta(hab1, hab3)
+        pt34 = self.fabricarPuerta(hab3, hab4)
+        pt24 = self.fabricarPuerta(hab2, hab4)
+
+        hab1.ponerEnOrientacionUnElemento(self.fabricarNorte(), self.fabricarPared())
+        hab1.ponerEnOrientacionUnElemento(self.fabricarEste(), pt13)
+        hab1.ponerEnOrientacionUnElemento(self.fabricarOeste(), self.fabricarPared())
+        hab1.ponerEnOrientacionUnElemento(self.fabricarSur(), pt12)
+
+        hab2.ponerEnOrientacionUnElemento(self.fabricarNorte(), pt12)
+        hab2.ponerEnOrientacionUnElemento(self.fabricarEste(), pt24)
+        hab2.ponerEnOrientacionUnElemento(self.fabricarOeste(), self.fabricarPared())
+        hab2.ponerEnOrientacionUnElemento(self.fabricarSur(), self.fabricarPared())
+
+        hab3.ponerEnOrientacionUnElemento(self.fabricarNorte(), self.fabricarPared())
+        hab3.ponerEnOrientacionUnElemento(self.fabricarEste(), self.fabricarPared())
+        hab3.ponerEnOrientacionUnElemento(self.fabricarOeste(), pt13)
+        hab3.ponerEnOrientacionUnElemento(self.fabricarSur(), pt34)
+
+        hab4.ponerEnOrientacionUnElemento(self.fabricarNorte(), pt34)
+        hab4.ponerEnOrientacionUnElemento(self.fabricarEste(), self.fabricarPared())
+        hab4.ponerEnOrientacionUnElemento(self.fabricarOeste(), pt24)
+        hab4.ponerEnOrientacionUnElemento(self.fabricarSur(), self.fabricarPared())
+
+        lab.agregarHabitacion(hab1)
+        lab.agregarHabitacion(hab2)
+        lab.agregarHabitacion(hab3)
+        lab.agregarHabitacion(hab4)
+
+        self.agregarBicho(self.fabricarBichoPerezosoEn(hab2))
+        self.agregarBicho(self.fabricarBichoPerezosoEn(hab4))
+        self.agregarBicho(self.fabricarBichoAgresivoEn(hab1))
+        self.agregarBicho(self.fabricarBichoAgresivoEn(hab3))
+
+        self.laberinto = lab
+
+

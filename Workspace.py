@@ -1,10 +1,11 @@
 from Juego import Juego
 from JuegoBombas import JuegoBombas
+import inspect
 
 # --------------------------------|
 # Código para probar el laberinto |
 # --------------------------------|
-
+"""
 juego = Juego()
 juego.fabricarLaberinto2HabFM()
 juego.laberinto.entrar()
@@ -28,3 +29,8 @@ print()
 
 juego.laberinto.habitaciones[0].norte.activa = True
 juego.laberinto.habitaciones[0].norte.entrar()
+"""
+
+juego = Juego()
+juego.fabricarLaberinto4HabFM()
+juego.laberinto.entrar()

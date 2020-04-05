@@ -19,3 +19,6 @@ class Habitacion(ElementoMapa):
 
     def esHabitacion(self):
         return True
+
+    def ponerEnOrientacionUnElemento(self, orientacion, unEM):
+        orientacion.ponerElementoEnPosicion(unEM, self)

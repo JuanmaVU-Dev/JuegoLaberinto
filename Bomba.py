@@ -1,7 +1,7 @@
-from ElementoMapa import ElementoMapa
+from Decorator import Decorator
 
 
-class Bomba(ElementoMapa):
+class Bomba(Decorator):
 
     def __init__(self):
         self.activa = False
@@ -10,7 +10,7 @@ class Bomba(ElementoMapa):
         if self.activa:
             print("La bomba ha explotado, has muerto")
         else:
-            print("La bomba esta desactivada, no ha pasado nada")
+            self.componente.entrar()
 
     def esBomba(self):
         return True
