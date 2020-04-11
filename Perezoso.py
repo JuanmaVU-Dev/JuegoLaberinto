@@ -5,4 +5,6 @@ Agresivo es un comportamiento de Bicho.
 
 
 class Perezoso(Modo):
-    pass
+
+    def esPerezoso(self):
+        return True

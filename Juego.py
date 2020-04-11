@@ -135,7 +135,7 @@ class Juego:
         self.laberinto = lab
 
     """
-    Laberinto de 4 habitaciones y 4 bichos
+    Laberinto de 4 habitaciones y 4 bichos (2 perezosos y 2 agresivos)
     """
     def fabricarLaberinto4HabFM(self):
         print("Juego del laberinto con 4 habitaciones")

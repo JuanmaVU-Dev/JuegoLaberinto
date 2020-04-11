@@ -34,3 +34,16 @@ juego.laberinto.habitaciones[0].norte.entrar()
 juego = Juego()
 juego.fabricarLaberinto4HabFM()
 juego.laberinto.entrar()
+
+juego.laberinto.habitaciones[1].entrar()
+juego.laberinto.habitaciones[2].entrar()
+juego.laberinto.habitaciones[3].entrar()
+
+juego.laberinto.habitaciones[1].sur.entrar()
+
+print ("¿Es Bicho perezoso?", juego.bichos[0].esPerezoso())
+print ("¿Es Bicho perezoso?", juego.bichos[1].esPerezoso())
+print ("¿Es Bicho agresivo?", juego.bichos[2].esAgresivo())
+print ("¿Es Bicho agresivo?", juego.bichos[3].esAgresivo())
+
+
