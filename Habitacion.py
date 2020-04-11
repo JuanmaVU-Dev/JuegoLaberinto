@@ -1,17 +1,14 @@
-from ElementoMapa import ElementoMapa
+from Contenedor import Contenedor
 
 """
 Habitacion es un elemento del mapa que tiene lados.
 """
 
 
-class Habitacion(ElementoMapa):
+class Habitacion(Contenedor):
     def __init__(self):
-        self.num = None
-        self.norte = None
-        self.sur = None
-        self.este = None
-        self.oeste = None
+        super().__init__()
+        self.lados = []
 
     # Metodos
     def entrar(self):
@@ -19,6 +16,3 @@ class Habitacion(ElementoMapa):
 
     def esHabitacion(self):
         return True
-
-    def ponerEnOrientacionUnElemento(self, orientacion, unEM):
-        orientacion.ponerElementoEnPosicion(unEM, self)

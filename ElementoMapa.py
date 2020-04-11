@@ -6,6 +6,8 @@ ElementoMapa es la clase abstracta de los elementos del mapa.
 
 
 class ElementoMapa(ABC):
+    def __init__(self):
+        self.padre = None
 
     @abstractmethod
     def entrar(self):
