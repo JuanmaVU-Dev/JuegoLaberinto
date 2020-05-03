@@ -14,5 +14,12 @@ class Habitacion(Contenedor):
     def entrar(self):
         print("Estás en la habitación: ", self.num)
 
+    def entrar(self):
+        print("Estás en la habitación: ", self.num)
+
+    def entrarAlguien(self, alguien):
+        print("Estás en la habitación: ", self.num)
+        alguien.posicion = self
+
     def esHabitacion(self):
         return True

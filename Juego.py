@@ -1,3 +1,5 @@
+import threading
+
 from Agresivo import Agresivo
 from Armario import Armario
 from Bicho import Bicho
@@ -20,6 +22,7 @@ class Juego:
     def __init__(self):
         self.laberinto = None
         self.bichos = []
+        self.hilosBichos = []
 
     # Metodos
 
@@ -256,4 +259,33 @@ class Juego:
         self.agregarBicho(self.fabricarBichoAgresivoEn(hab3))
 
         self.laberinto = lab
+
+    def abrirPuertas(self):
+        for EM in self.laberinto.recorrer():
+            if EM.esPuerta():
+                EM.abrir()
+
+    def cerrarPuertas(self):
+        for EM in self.laberinto.recorrer():
+            if EM.esPuerta():
+                EM.cerrar()
+
+    def lanzarHilosBichos(self):
+        def actuacion(bicho):
+            while bicho.vivo:
+                bicho.actua()
+
+        for bicho in self.bichos:
+            t = threading.Thread(target=actuacion, args=(bicho,))
+            self.hilosBichos.append(t)
+            t.start()
+
+    def terminarHilosBichos(self):
+        for bicho in self.bichos:
+            print("Muere "+str(bicho))
+            bicho.matar()
+
+
+
+
 

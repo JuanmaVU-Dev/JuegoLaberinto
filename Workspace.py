@@ -54,12 +54,24 @@ print("¿Es Bicho agresivo?", juego.bichos[3].esAgresivo())"""
 
 # Codigo de prueba práctica 3 (Patrón Composite)
 
-juego = Juego()
+"""juego = Juego()
 juego.fabricarLaberinto4HabArm()
 juego.laberinto.entrar()
 juego.laberinto.habitaciones[0].hijos[0].entrar()
 print("¿Es el hijo 0 de la habitacion un armario?", juego.laberinto.habitaciones[0].hijos[0].esArmario())
-print("¿Es el hijo 1 de la habitacion una bomba?", juego.laberinto.habitaciones[0].hijos[1].esBomba())
+print("¿Es el hijo 1 de la habitacion una bomba?", juego.laberinto.habitaciones[0].hijos[1].esBomba())"""
+
+# Codigo de prueba práctica 4 (Iterator y Template Method)
+
+juego = Juego()
+juego.fabricarLaberinto4HabArm()
+juego.abrirPuertas()
+juego.lanzarHilosBichos()
+juego.cerrarPuertas()
+juego.terminarHilosBichos()
+
+
+
 
 
 

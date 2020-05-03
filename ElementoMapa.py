@@ -24,3 +24,11 @@ class ElementoMapa(ABC):
 
     def esPuerta(self):
         return False
+
+    def recorrer(self, lista):
+        lista.append(self)
+
+
+
+
+
