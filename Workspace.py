@@ -77,46 +77,44 @@ juego = Juego()
 unaFactoria = LaberintoFactory()
 juego.fabricarLaberinto4HabArmAF(unaFactoria)
 juego.abrirPuertas()
+orientaciones = []
+
+
+def funciona():
+
+    if id(or1) == id(or2) == id(or3) == id(or4):
+        print("Singleton funciona, todas las variables contienen la misma instancia")
+    else:
+        print("Singleton ha fallado, las variable no tienen la misma instancia")
+
 
 or1 = juego.laberinto.habitaciones[0].orientaciones[0]
 or2 = juego.laberinto.habitaciones[1].orientaciones[0]
 or3 = juego.laberinto.habitaciones[2].orientaciones[0]
 or4 = juego.laberinto.habitaciones[3].orientaciones[0]
 
-if id(or1) == id(or2) == id(or3) == id(or4):
-    print("Singleton funciona, todas las variables contienen la misma instancia")
-else:
-    print("Singleton ha fallado, las variable no tienen la misma instancia")
+funciona()
 
 or1 = juego.laberinto.habitaciones[0].orientaciones[1]
 or2 = juego.laberinto.habitaciones[1].orientaciones[1]
 or3 = juego.laberinto.habitaciones[2].orientaciones[1]
 or4 = juego.laberinto.habitaciones[3].orientaciones[1]
 
-if id(or1) == id(or2) == id(or3) == id(or4):
-    print("Singleton funciona, todas las variables contienen la misma instancia")
-else:
-    print("Singleton ha fallado, las variable no tienen la misma instancia")
+funciona()
 
 or1 = juego.laberinto.habitaciones[0].orientaciones[2]
 or2 = juego.laberinto.habitaciones[1].orientaciones[2]
 or3 = juego.laberinto.habitaciones[2].orientaciones[2]
 or4 = juego.laberinto.habitaciones[3].orientaciones[2]
 
-if id(or1) == id(or2) == id(or3) == id(or4):
-    print("Singleton funciona, todas las variables contienen la misma instancia")
-else:
-    print("Singleton ha fallado, las variable no tienen la misma instancia")
+funciona()
 
 or1 = juego.laberinto.habitaciones[0].orientaciones[3]
 or2 = juego.laberinto.habitaciones[1].orientaciones[3]
 or3 = juego.laberinto.habitaciones[2].orientaciones[3]
 or4 = juego.laberinto.habitaciones[3].orientaciones[3]
 
-if id(or1) == id(or2) == id(or3) == id(or4):
-    print("Singleton funciona, todas las variables contienen la misma instancia")
-else:
-    print("Singleton ha fallado, las variable no tienen la misma instancia")
+funciona()
 
 
 
