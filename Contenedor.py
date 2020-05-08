@@ -21,7 +21,7 @@ class Contenedor(ElementoMapa, ABC):
         return False
 
     def agregarOrientaciones(self):
-        self.orientaciones = [Norte(), Sur(), Este(), Oeste()]
+        self.orientaciones = [Norte().default(), Sur().default(), Este().default(), Oeste().default()]
 
     def ponerEnOrientacionUnElemento(self, orientacion, unEM):
         orientacion.ponerElementoEnPosicion(unEM, self)

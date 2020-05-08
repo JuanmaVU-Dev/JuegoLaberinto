@@ -1,6 +1,7 @@
 from Juego import Juego
 from JuegoBombas import JuegoBombas
-import inspect
+from LaberintoFactory import LaberintoFactory
+
 
 # --------------------------------|
 # Código para probar el laberinto |
@@ -63,12 +64,60 @@ print("¿Es el hijo 1 de la habitacion una bomba?", juego.laberinto.habitaciones
 
 # Codigo de prueba práctica 4 (Iterator y Template Method)
 
-juego = Juego()
+"""juego = Juego()
 juego.fabricarLaberinto4HabArm()
 juego.abrirPuertas()
 juego.lanzarHilosBichos()
 juego.cerrarPuertas()
-juego.terminarHilosBichos()
+juego.terminarHilosBichos()"""
+
+# Código de prueba práctica 5 (AbstractFactory y Singleton)
+
+juego = Juego()
+unaFactoria = LaberintoFactory()
+juego.fabricarLaberinto4HabArmAF(unaFactoria)
+juego.abrirPuertas()
+
+or1 = juego.laberinto.habitaciones[0].orientaciones[0]
+or2 = juego.laberinto.habitaciones[1].orientaciones[0]
+or3 = juego.laberinto.habitaciones[2].orientaciones[0]
+or4 = juego.laberinto.habitaciones[3].orientaciones[0]
+
+if id(or1) == id(or2) == id(or3) == id(or4):
+    print("Singleton funciona, todas las variables contienen la misma instancia")
+else:
+    print("Singleton ha fallado, las variable no tienen la misma instancia")
+
+or1 = juego.laberinto.habitaciones[0].orientaciones[1]
+or2 = juego.laberinto.habitaciones[1].orientaciones[1]
+or3 = juego.laberinto.habitaciones[2].orientaciones[1]
+or4 = juego.laberinto.habitaciones[3].orientaciones[1]
+
+if id(or1) == id(or2) == id(or3) == id(or4):
+    print("Singleton funciona, todas las variables contienen la misma instancia")
+else:
+    print("Singleton ha fallado, las variable no tienen la misma instancia")
+
+or1 = juego.laberinto.habitaciones[0].orientaciones[2]
+or2 = juego.laberinto.habitaciones[1].orientaciones[2]
+or3 = juego.laberinto.habitaciones[2].orientaciones[2]
+or4 = juego.laberinto.habitaciones[3].orientaciones[2]
+
+if id(or1) == id(or2) == id(or3) == id(or4):
+    print("Singleton funciona, todas las variables contienen la misma instancia")
+else:
+    print("Singleton ha fallado, las variable no tienen la misma instancia")
+
+or1 = juego.laberinto.habitaciones[0].orientaciones[3]
+or2 = juego.laberinto.habitaciones[1].orientaciones[3]
+or3 = juego.laberinto.habitaciones[2].orientaciones[3]
+or4 = juego.laberinto.habitaciones[3].orientaciones[3]
+
+if id(or1) == id(or2) == id(or3) == id(or4):
+    print("Singleton funciona, todas las variables contienen la misma instancia")
+else:
+    print("Singleton ha fallado, las variable no tienen la misma instancia")
+
 
 
 

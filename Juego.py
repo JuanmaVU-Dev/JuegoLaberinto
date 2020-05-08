@@ -27,7 +27,7 @@ class Juego:
     # Metodos
 
     # Se añade un bicho
-    def agregarBicho(self,bicho):
+    def agregarBicho(self, bicho):
         self.bichos.append(bicho)
 
     # Métodos de fabricación
@@ -257,6 +257,65 @@ class Juego:
         self.agregarBicho(self.fabricarBichoAgresivoEn(hab1))
         self.agregarBicho(self.fabricarBichoPerezosoEn(hab4))
         self.agregarBicho(self.fabricarBichoAgresivoEn(hab3))
+
+        self.laberinto = lab
+
+    # Creación de laberinto empleando una factoría abstracta.
+
+    def fabricarLaberinto4HabArmAF(self, unaFactoria):
+        lab = unaFactoria.fabricarLaberinto()
+        hab1 = unaFactoria.fabricarHabitacion(1)
+        hab2 = unaFactoria.fabricarHabitacion(2)
+        hab3 = unaFactoria.fabricarHabitacion(3)
+        hab4 = unaFactoria.fabricarHabitacion(4)
+
+        pt12 = unaFactoria.fabricarPuerta(hab1, hab2)
+        pt13 = unaFactoria.fabricarPuerta(hab1, hab3)
+        pt34 = unaFactoria.fabricarPuerta(hab3, hab4)
+        pt24 = unaFactoria.fabricarPuerta(hab2, hab4)
+
+        hab1.ponerEnOrientacionUnElemento(unaFactoria.fabricarNorte(), unaFactoria.fabricarPared())
+        hab1.ponerEnOrientacionUnElemento(unaFactoria.fabricarEste(), pt13)
+        hab1.ponerEnOrientacionUnElemento(unaFactoria.fabricarOeste(), unaFactoria.fabricarPared())
+        hab1.ponerEnOrientacionUnElemento(unaFactoria.fabricarSur(), pt12)
+
+        unaFactoria.fabricarArmarioEn(hab1)
+
+        hab2.ponerEnOrientacionUnElemento(unaFactoria.fabricarNorte(), pt12)
+        hab2.ponerEnOrientacionUnElemento(unaFactoria.fabricarEste(), pt24)
+        hab2.ponerEnOrientacionUnElemento(unaFactoria.fabricarOeste(), unaFactoria.fabricarPared())
+        hab2.ponerEnOrientacionUnElemento(unaFactoria.fabricarSur(), unaFactoria.fabricarPared())
+
+        unaFactoria.fabricarArmarioEn(hab2)
+
+        hab3.ponerEnOrientacionUnElemento(unaFactoria.fabricarNorte(), unaFactoria.fabricarPared())
+        hab3.ponerEnOrientacionUnElemento(unaFactoria.fabricarEste(), unaFactoria.fabricarPared())
+        hab3.ponerEnOrientacionUnElemento(unaFactoria.fabricarOeste(), pt13)
+        hab3.ponerEnOrientacionUnElemento(unaFactoria.fabricarSur(), pt34)
+
+        unaFactoria.fabricarArmarioEn(hab3)
+
+        hab4.ponerEnOrientacionUnElemento(unaFactoria.fabricarNorte(), pt34)
+        hab4.ponerEnOrientacionUnElemento(unaFactoria.fabricarEste(), unaFactoria.fabricarPared())
+        hab4.ponerEnOrientacionUnElemento(unaFactoria.fabricarOeste(), pt24)
+        hab4.ponerEnOrientacionUnElemento(unaFactoria.fabricarSur(), unaFactoria.fabricarPared())
+
+        unaFactoria.fabricarArmarioEn(hab4)
+
+        hab1.agregarHijo(unaFactoria.fabricarBomba())
+        hab2.agregarHijo(unaFactoria.fabricarBomba())
+        hab3.agregarHijo(unaFactoria.fabricarBomba())
+        hab4.agregarHijo(unaFactoria.fabricarBomba())
+
+        lab.agregarHabitacion(hab1)
+        lab.agregarHabitacion(hab2)
+        lab.agregarHabitacion(hab3)
+        lab.agregarHabitacion(hab4)
+
+        self.agregarBicho(unaFactoria.fabricarBichoPerezosoEn(hab2))
+        self.agregarBicho(unaFactoria.fabricarBichoAgresivoEn(hab1))
+        self.agregarBicho(unaFactoria.fabricarBichoPerezosoEn(hab4))
+        self.agregarBicho(unaFactoria.fabricarBichoAgresivoEn(hab3))
 
         self.laberinto = lab
 
